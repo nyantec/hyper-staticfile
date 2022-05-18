@@ -138,7 +138,7 @@ impl FileResponseBuilder {
         res.body(if self.is_head {
             Body::empty()
         } else {
-            FileBytesStream::new(file).into_body()
+            FileBytesStream::new(file, Some(metadata.len() as usize)).into_body()
         })
     }
 }
